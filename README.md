@@ -1,3 +1,5 @@
 # Calculator_Project_Christmas_2023
 
-Fvck! Github
+I am a cybersecurity student.
+This is starting Python project for christmas 2023.
+I am coding a simple calculator.
