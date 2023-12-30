@@ -96,7 +96,6 @@ elif op_scelta == "binario":
         risultato_bin = bin(bin_val_1)
         print(bin_val_1, "=", risultato_bin)
 
-
 #INPUT NON VALIDO
 #se l'utente inserisce un input non valido, stampo un messaggio di errore
 else:
