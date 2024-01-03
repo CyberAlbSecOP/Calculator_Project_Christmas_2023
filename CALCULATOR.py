@@ -1,7 +1,12 @@
+#CICLO DI RIPETIZIONE
+#creo un ciclo while per ripetere il codice una volta completata l'operazione
 while True:
+    #creo la funzione calcolatrice
     def calcolatrice():
+        
+        
         #AVVIO
-        print("Benvenuto nella calcolatrice!")
+        print("Calcolatrice in esecuzione!")
         #creo un ciclo while per ripetere l'avvio finché l'utente non inserisce "si" o "no"
         while True:
             #chiedo all'utente se vuole avviare il programma
@@ -18,10 +23,9 @@ while True:
                 print("Risposta non valida!")
         
         
-        
         #LISTA OPERAZIONI
         #creo la lista delle operazioni disponibili e la stampo
-        lista_op = ["addizione", "sottrazione", "moltiplicazione", "divisione", "esponenza", "binario", "esci"]
+        lista_op = ["addizione", "sottrazione", "moltiplicazione", "divisione", "esponenza", "binario", "radice quadrata", "esci"]
         print("Le operazioni disponibili sono:", lista_op)
 
 
@@ -99,6 +103,7 @@ while True:
         if op_scelta == "moltiplicazione":
             moltiplicazione()
 
+
         #DIVISIONE
         #definisco la funzione divisione
         def divisione():
@@ -123,6 +128,7 @@ while True:
         if op_scelta == "divisione":
             divisione()
 
+
         #ESPONENZA
         #definisco la funzione esponenza
         def esponenza():
@@ -143,6 +149,7 @@ while True:
         #se l'utente sceglie esponenza, eseguo la funzione esponenza
         if op_scelta == "esponenza":
             esponenza()
+
 
         #BINARIO
         #definisco la funzione binario
@@ -165,6 +172,30 @@ while True:
             binario()
                 
 
+        #RADICE QUADRATA
+        #definisco la funzione radice quadrata
+        def radice_quadrata():
+            #creo un ciclo while per ripetere la richiesta di valori finché l'utente non inserisce un valore numerico
+            while True:
+                #provo a chiedere un valore
+                try:
+                    radq_val = float(input("Scrivi un numero:    "))
+                    #se l'utente inserisce un valore numerico, stampo il risultato
+                    risultato_radq = radq_val ** 0.5
+                    print("La radice quadrata di", radq_val, "è", risultato_radq)
+                    #se l'utente inserisce un valore numerico, esco dal ciclo while
+                    break
+                #se l'utente inserisce un valore non numerico, stampo un messaggio di errore
+                except ValueError:
+                    print("Il valore inserito non è un numero!")
+        #se l'utente sceglie radice quadrata, eseguo la funzione radice quadrata
+        if op_scelta == "radice quadrata":
+            radice_quadrata()
+
+
+        #
+
+
         #ESCI
         #definisco la funzione esci
         def esci():
@@ -173,6 +204,7 @@ while True:
             print("Arrivederci!")
         if op_scelta == "esci":
             esci()
-            
+
+ 
     #RICHIAMO LA FUNZIONE CALCOLATRICE
     calcolatrice()
