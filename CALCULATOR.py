@@ -1,5 +1,6 @@
 # Lista per memorizzare lo storico delle operazioni
 storico_operazioni = []
+
 #creo un comando per aggiungere una nuova linea dopo ogni operazione
 print("\n")
         
@@ -30,7 +31,7 @@ while True:
         
         #LISTA OPERAZIONI
         #creo la lista delle operazioni disponibili e la stampo
-        lista_op = ["addizione", "sottrazione", "moltiplicazione", "divisione", "esponenza", "binario", "radice quadrata", "storico", "esci"]
+        lista_op = ["addizione", "sottrazione", "moltiplicazione", "divisione", "esponenza", "binario", "radice quadrata", "storico", "log", "esci"]
         print("Le operazioni disponibili sono:", lista_op)
 
 
@@ -66,6 +67,7 @@ while True:
                 #se l'utente inserisce un valore non numerico, stampo un messaggio di errore
                 except ValueError:
                     print("I valori inseriti non sono numeri!")
+                    print("\n")
         #se l'utente sceglie addizione, eseguo la funzione addizione
         if op_scelta == "addizione":
             addizione()
@@ -93,6 +95,7 @@ while True:
                 #se l'utente inserisce un valore non numerico, stampo un messaggio di errore
                 except ValueError:
                     print("I valori inseriti non sono numeri!")
+                    print("\n")
         #se l'utente sceglie sottrazione, eseguo la funzione sottrazione
         if op_scelta == "sottrazione":
             sottrazione()
@@ -120,6 +123,7 @@ while True:
                 #se l'utente inserisce un valore non numerico, stampo un messaggio di errore
                 except ValueError:
                     print("I valori inseriti non sono numeri!")
+                    print("\n")
         #se l'utente sceglie moltiplicazione, eseguo la funzione moltiplicazione
         if op_scelta == "moltiplicazione":
             moltiplicazione()
@@ -150,6 +154,7 @@ while True:
                 #se l'utente inserisce zero come secondo valore, stampo un messaggio di errore
                 except ZeroDivisionError:
                     print("Non puoi dividere per zero!")
+                    print("\n")
         #se l'utente sceglie divisione, eseguo la funzione divisione
         if op_scelta == "divisione":
             divisione()
@@ -176,7 +181,8 @@ while True:
                     break
                 #se l'utente inserisce un valore non numerico, stampo un messaggio di errore
                 except ValueError:
-                    print("I valori inseriti non sono numeri!") 
+                    print("I valori inseriti non sono numeri!")
+                    print("\n")
         #se l'utente sceglie esponenza, eseguo la funzione esponenza
         if op_scelta == "esponenza":
             esponenza()
@@ -203,6 +209,7 @@ while True:
                 #se l'utente inserisce un valore non numerico, stampo un messaggio di errore
                 except ValueError:
                     print("Il valore inserito non è un numero!")
+                    print("\n")
         #se l'utente sceglie binario, eseguo la funzione binario
         if op_scelta == "binario":
             binario()
@@ -229,6 +236,7 @@ while True:
                 #se l'utente inserisce un valore non numerico, stampo un messaggio di errore
                 except ValueError:
                     print("Il valore inserito non è un numero!")
+                    print("\n")
         #se l'utente sceglie radice quadrata, eseguo la funzione radice quadrata
         if op_scelta == "radice quadrata":
             radice_quadrata()
@@ -258,7 +266,31 @@ while True:
                 break
         if op_scelta == "storico":
             storico()   
-
+            
+            
+        #FILE DI LOG
+        def log():
+            write_log = input("Vuoi salvare lo storico delle operazioni in un file di log? (si/no)    ")
+            print("\n")
+            while True:
+                if write_log == "si":
+                    log_file = open("log.txt", "w")
+                    log_file.write("Storico delle operazioni:\n")
+                    for operazione in storico_operazioni:
+                        log_file.write(str(operazione) + "\n")
+                    log_file.close()
+                    print("File di log creato!")
+                    print("\n")
+                    break
+                elif write_log == "no":
+                    print("File di log non creato!")
+                    print("\n")
+                    break
+                else:
+                    print("Risposta non valida!")
+                    print("\n")
+        if op_scelta == "log":
+            log()
 
         #ESCI
         #definisco la funzione esci
