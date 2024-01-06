@@ -31,7 +31,7 @@ while True:
         
         #LISTA OPERAZIONI
         #creo la lista delle operazioni disponibili e la stampo
-        lista_op = ["addizione", "sottrazione", "moltiplicazione", "divisione", "esponenza", "binario", "radice quadrata", "storico", "log", "esci"]
+        lista_op = ["addizione", "sottrazione", "moltiplicazione", "divisione", "esponenza", "binario", "radice quadrata", "storico", "esci"]
         print("Le operazioni disponibili sono:", lista_op)
 
 
@@ -66,7 +66,7 @@ while True:
                     break
                 #se l'utente inserisce un valore non numerico, stampo un messaggio di errore
                 except ValueError:
-                    print("I valori inseriti non sono numeri!")
+                    print("I valori inseriti non sono validi!")
                     print("\n")
         #se l'utente sceglie addizione, eseguo la funzione addizione
         if op_scelta == "addizione":
@@ -86,7 +86,7 @@ while True:
                     risultato_sott = sott_val_1 - sott_val_2
                     print(sott_val_1, "-", sott_val_2, "=", risultato_sott)
                     #creo una variabile per memorizzare l'operazione
-                    risultato_sott_list = [sott_val_1, "+", sott_val_2, "=", risultato_sott]
+                    risultato_sott_list = [sott_val_1, "-", sott_val_2, "=", risultato_sott]
                     # Aggiungo l'operazione allo storico
                     storico_operazioni.append(risultato_sott_list)
                     print("\n")
@@ -114,7 +114,7 @@ while True:
                     risultato_molt = molt_val_1 * molt_val_2
                     print(molt_val_1, "*", molt_val_2, "=", risultato_molt)
                     #creo una variabile per memorizzare l'operazione
-                    risultato_molt_list = [molt_val_1, "+", molt_val_2, "=", risultato_molt]
+                    risultato_molt_list = [molt_val_1, "*", molt_val_2, "=", risultato_molt]
                     # Aggiungo l'operazione allo storico
                     storico_operazioni.append(risultato_molt_list)
                     print("\n")
@@ -142,7 +142,7 @@ while True:
                     risultato_div = div_val_1 / div_val_2
                     print(div_val_1, "/", div_val_2, "=", risultato_div)
                     #creo una variabile per memorizzare l'operazione
-                    risultato_div_list = [div_val_1, "+", div_val_2, "=", risultato_div]
+                    risultato_div_list = [div_val_1, "/", div_val_2, "=", risultato_div]
                     # Aggiungo l'operazione allo storico
                     storico_operazioni.append(risultato_div_list)
                     print("\n")
@@ -173,7 +173,7 @@ while True:
                     risultato_esp = esp_val_1 ** esp_val_2
                     print(esp_val_1, "^", esp_val_2, "=", risultato_esp)
                     #creo una variabile per memorizzare l'operazione
-                    risultato_esp_list = [esp_val_1, "+", esp_val_2, "=", risultato_esp]
+                    risultato_esp_list = [esp_val_1, "**", esp_val_2, "=", risultato_esp]
                     # Aggiungo l'operazione allo storico
                     storico_operazioni.append(risultato_esp_list)
                     print("\n")
@@ -249,7 +249,7 @@ while True:
                 try:
                     print("Storico delle operazioni:")
                     for operazione in storico_operazioni:
-                        print(operazione)
+                        print(" ".join(str(op) for op in operazione))
                     break
                 except IndexError:
                     print("Non ci sono operazioni da visualizzare!")
@@ -267,30 +267,6 @@ while True:
         if op_scelta == "storico":
             storico()   
             
-            
-        #FILE DI LOG
-        def log():
-            write_log = input("Vuoi salvare lo storico delle operazioni in un file di log? (si/no)    ")
-            print("\n")
-            while True:
-                if write_log == "si":
-                    log_file = open("log.txt", "w")
-                    log_file.write("Storico delle operazioni:\n")
-                    for operazione in storico_operazioni:
-                        log_file.write(str(operazione) + "\n")
-                    log_file.close()
-                    print("File di log creato!")
-                    print("\n")
-                    break
-                elif write_log == "no":
-                    print("File di log non creato!")
-                    print("\n")
-                    break
-                else:
-                    print("Risposta non valida!")
-                    print("\n")
-        if op_scelta == "log":
-            log()
 
         #ESCI
         #definisco la funzione esci
@@ -301,6 +277,14 @@ while True:
         if op_scelta == "esci":
             esci()
 
+        #creo una funzione che scrive il log delle operazioni su un file di testo automaticamente all' uscita del programma
+        def log_auto():
+            log_file_auto = open("log.txt", "w")
+            log_file_auto.write("Storico delle operazioni:\n")
+            for operazione in storico_operazioni:
+                log_file_auto.write(" ".join(str(op) for op in operazione) + "\n")
+            log_file_auto.close()
+        log_auto()
  
     #RICHIAMO LA FUNZIONE CALCOLATRICE
     calcolatrice()

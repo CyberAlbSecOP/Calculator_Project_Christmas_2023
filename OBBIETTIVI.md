@@ -10,10 +10,9 @@ FATTO:
 - storico delle operazioni da richiamare a comando
 - storico delle operazioni ordinato
 - storico delle operazioni scritto su file di testo
+- far si che il file di log venga creato automaticamente
 
 DA FARE:
-- far si che il file di log venga creato automaticamente
-- gestire errore risultato troppo grande e input troppo grande
 - Utilizzare più valori nelle operazioni
 - Far riconoscere al codice che operazione è
 - Integrare operazioni più complesse
