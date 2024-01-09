@@ -260,6 +260,7 @@ while True:
         #definisco la funzione storico operazioni
         def storico():
             print("\n")
+            #stampo lo storico delle operazioni
             while True:
                 visualizza_storico()
                 print("\n")
@@ -277,12 +278,18 @@ while True:
         if op_scelta == "esci":
             esci()
 
+
+        #LOG
         #creo una funzione che scrive il log delle operazioni su un file di testo automaticamente all' uscita del programma
         def log_auto():
+            #apro il file di testo in modalità scrittura
             log_file_auto = open("log.txt", "w")
+            #scrivo il log delle operazioni
             log_file_auto.write("Storico delle operazioni:\n")
+            #creo un ciclo for per scrivere ogni operazione su una nuova riga
             for operazione in storico_operazioni:
                 log_file_auto.write(" ".join(str(op) for op in operazione) + "\n")
+            #chiudo il file di testo
             log_file_auto.close()
         log_auto()
  
